@@ -28,3 +28,14 @@ print(f"Data type of y: {y.dtype}")
 first_column = y[:, 0]
 # Get all rows (:), but only the first column (0)
 print("\nJust the fisrt column:\n", first_column) # slicing
+
+l = torch.rand(3, 3)
+print(f"Original Location: {l.device}")
+
+#Mobe it to the GPU if available
+if torch.cuda.is_available():
+   device= torch.device("cuda")
+   l = l.to(device)
+   print(f"New location: {l.device}")
+else:
+    print("GPU not found, staying on CPU.")
